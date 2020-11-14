@@ -1,9 +1,9 @@
-# BotRat V1.1
-### formerly known as beatratbot
+# BotRat V1.1.0
+### Formerly known as beatratbot
 
 This Discord.js bot hopes to achieve the following goals:
 
-1. Provide a solid understanding of an event based node system, discord api specific functionalities, and true deployment procedure (heroku?).
+1. Provide a solid understanding of an event based node system, discord api specific functionalities, JS modules export/require, and true deployment procedure. (heroku?)
 2. Provide a harness for deploying/testing various web api "apps" by using discord as an interaction device.
 3. Supply the server with computationally complex meme content.
 
