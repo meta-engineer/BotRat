@@ -17,9 +17,12 @@ exports points? to module.exports so reassigning it will not be usable, but muta
 
 TODO:
 schedule command
+schedule refactor with database
+schedule ignore? disallows getting spammed without having to block botrat
+schedule set staging
+botban command (disallow that user to use bot);
 voice https://discordjs.guide/voice/
 canvas fun? https://discordjs.guide/popular-topics/canvas.html#basic-image-loading
 currency system https://discordjs.guide/sequelize/currency.html
-add admin only filter to commands
 about command couple with README?
 command cooldown?

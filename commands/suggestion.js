@@ -11,7 +11,7 @@ module.exports = {
     dmUsable: true,
     execute: (msg, args) => {
         // should we have directory structures defined in a config file?
-        fs.appendFile('resources/suggestions.txt', 
+        fs.appendFile('database/suggestions.txt', 
         msg.author.username + " @ " + new Date().toString() + '\n' + args[0] + '\n\n', 
         (e) => {
             if (e) {

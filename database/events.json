@@ -1,0 +1,11 @@
+[
+{
+    "name": "event"
+}
+,{
+    "name": "inline with no square brace"
+}
+,{
+    "name": "strange whitespacing, but still works?"
+}
+]
