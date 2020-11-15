@@ -6,7 +6,7 @@ if (!discord) return console.error("Failed to import discord.js");
 
 const auth = require('./secrets.json');
 if (!auth) return console.error("No token file (secrets.json) found");
-const prefix = "<@!" + auth.CLIENT_ID + "> "; //this a permenant solution?
+//const prefix = "<@!" + auth.CLIENT_ID + "> "; //this a permenant solution?
 // ===============
 
 // node package imports
@@ -49,12 +49,18 @@ bot.on('ready', () => {
 
 bot.on('message', (msg) => {
     if (msg.author.bot) return;
-    if (!msg.content.startsWith(prefix)) return;
     if (msg.webhookID) return;
+    //if (!msg.content.startsWith(prefix)) return;
     //console.log(msg);
 
+    const prefixRegex = new RegExp(`^(<@!?${auth.CLIENT_ID}>)\\s*`);
+    if (!prefixRegex.test(msg.content)) return;
+    const [, matchedPrefix] = msg.content.match(prefixRegex);
+
     // remove prefix parse into arguments
-    const argsStr = msg.content.slice(prefix.length).trim();
+    const argsStr = msg.content.slice(matchedPrefix.length).trim();
+    if (!argsStr) return;   // just exit quietly on no args, should we suggest help?
+
     // split on '"', then alternating index will be split on spaces?
     const argsList = argsStr.split('"').filter(w => w.length > 0);
     const args = [];
@@ -87,7 +93,7 @@ bot.on('message', (msg) => {
         msg.channel.send(`"${cmd.name}" cannot be used in a server`);
     }
     if (args.length < cmd.argc) {
-        msg.channel.send(cmd.usage);
+        msg.channel.send("Usage: " + cmd.usage);
         return;
     }
     // ========= end validation ==========

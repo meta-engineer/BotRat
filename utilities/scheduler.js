@@ -1,23 +1,25 @@
 const fs = require('fs');
+const discord = require('discord.js');
 
 // 1. function that is called when event occurs (created event embed, send accounting for channel), "deletes" its timeout and set Timeout for next (with monthly logic)
 // 2. read from events "database" and setTimout for the events (with monthly logic) (account for duplicates, and cull events which have passed and don't repeat) rewrite updated events back (json).
 // 3. when new event is set write into "Database"
 
-// error handling
-// option 1: command file handles everything, this trusts completely
-// option 2: throw error back to command file
+// error handling:throw error back to command file
 //      same throw risk as fs sync functions
-// option 3: accept callback and send (result, error)
-//      same throw risk as fs async functions
+
 
 // should there be an ignoreList to disallow spamming?
-// should set in the command file stage creation to double check info with user?
-//      events can be:
-// public and visible
-// public and hidden (surprise)
-// private and visible to particpants, (if given event name you can signup)
-// private and hidden (timed message)
+//      scheduler can make:
+// visible events (listed publicly, sends to guild)
+// hidden events (does not list, sends to guild)
+// hidden private events (does not list, sends to DMs)
+// visible* private events, (listed publicly, sends to DMs)
+
+// How to Handle mentions?
+// we need user.id, if in a guild we can make then @username and grab it
+// if in DM they can't @username so we would have to grab it from the cache
+//      but thats not guarenteed to have all users
 
 module.exports = {
     // this adds the timeout to the client (always a normal timeout)
@@ -27,7 +29,6 @@ module.exports = {
         
     },
     createTimeoutSync: (client, eventArgs) => {
-        
         // we want to send this event and then...
 
         // ... we want to setup the next one with createTimeout()
@@ -47,6 +48,16 @@ module.exports = {
     },
     removeUserSync(client, user, eventStr) {
 
+    },
+    createEmbed(eventArgs) {
+        const embed = new discord.MessageEmbed()
+        if (eventArgs.name) embed.setTitle(eventArgs.name);
+        if (eventArgs.authorName) embed.setFooter(eventArgs.authorName);
+        if (eventArgs.attachmentURL) embed.setImage(eventArgs.attachmentURL);
+        if (eventArgs.message) embed.setDescription(eventArgs.mentions.join(' ') + '\n' + eventArgs.message);
+        embed.setTimestamp();
+        
+        return embed;
     }
 }
 

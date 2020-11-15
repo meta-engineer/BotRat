@@ -19,7 +19,7 @@ TODO:
 schedule command
 schedule refactor with database
 schedule ignore? disallows getting spammed without having to block botrat
-schedule set staging
+schedule mentions??
 botban command (disallow that user to use bot);
 voice https://discordjs.guide/voice/
 canvas fun? https://discordjs.guide/popular-topics/canvas.html#basic-image-loading

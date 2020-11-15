@@ -2,7 +2,7 @@ module.exports = {
     name: 'shadow-masters',
     aliases: [],
     description: 'Messes with a user',
-    usage: 'shadow-masters <name> <facade text>',
+    usage: 'shadow-masters <NAME> <FACADE TEXT>',
     example: 'shadow-masters Victor "a halarious garfield meme"',
     argc: 2, // we can list validation requirements to check early
     guildUsable: true,

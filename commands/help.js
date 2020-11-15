@@ -2,7 +2,7 @@ module.exports = {
     name: 'help',
     aliases: ['commands'],
     description: 'List all commands or info about a command',
-    usage: 'help <command>',
+    usage: 'help <COMMAND>',
     example: '@BotRat help help',
     argc: 0, // we can list validation requirements to check early
     guildUsable: true,
@@ -17,6 +17,7 @@ module.exports = {
             reply.push('Available commands:');
             reply.push(commands.filter(c => !c.hidden).map(c => `*${c.name}*`).join(', '));
             reply.push(`Use "${commands.get('help').usage}" for more info`);
+            reply.push(`(You can ask me in a DM to reduce spam.)`);
         } else {
             while (args.length) {
                 const cmdStr = args.shift().toLowerCase();
