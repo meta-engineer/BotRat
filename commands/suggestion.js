@@ -15,7 +15,7 @@ module.exports = {
         msg.author.username + " @ " + new Date().toString() + '\n' + args[0] + '\n\n', 
         (e) => {
             if (e) {
-                msg.channel.send('Could not write suggestion, please try again later or inform the developers elsewhere (use "about")');
+                msg.channel.send('Could not write suggestion, please try again later or inform the developers elsewhere (use *about*)');
             }
             msg.channel.send('Thank you for your suggestion!');
         });

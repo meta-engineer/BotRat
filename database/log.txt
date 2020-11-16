@@ -1,0 +1,450 @@
+MetaEngineer @ Sun Nov 15 2020 16:30:05 GMT-0500 (Eastern Standard Time)
+can you hear me?
+
+MetaEngineer @ Sun Nov 15 2020 16:30:17 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> what the hell are you
+
+MetaEngineer @ Sun Nov 15 2020 16:30:39 GMT-0500 (Eastern Standard Time)
+big
+big
+EA big
+EA sports
+Halo reach
+
+lol
+
+MetaEngineer @ Sun Nov 15 2020 18:23:32 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> bot _timeouts
+
+MetaEngineer @ Sun Nov 15 2020 20:07:30 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> schedule
+
+MetaEngineer @ Sun Nov 15 2020 20:08:11 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> schedule
+
+MetaEngineer @ Sun Nov 15 2020 20:09:40 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan event "Test1" "15 Nov 2020 20:10:00 EST" dm "You sucl" "" ""
+
+MetaEngineer @ Sun Nov 15 2020 20:10:05 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan event "Test1" "15 Nov 2020 20:10:00 EST" 0 dm "You sucl" "" ""
+
+MetaEngineer @ Sun Nov 15 2020 20:10:07 GMT-0500 (Eastern Standard Time)
+yes
+
+MetaEngineer @ Sun Nov 15 2020 20:20:56 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan event "Test1" "15 Nov 2020 20:10:00 EST" 0 dm "You sucl" "" ""
+
+MetaEngineer @ Sun Nov 15 2020 20:21:03 GMT-0500 (Eastern Standard Time)
+yes
+
+MetaEngineer @ Sun Nov 15 2020 20:22:23 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan event "Test1" "15 Nov 2020 20:10:00 EST" 0 dm "You sucl" "" ""
+
+MetaEngineer @ Sun Nov 15 2020 20:22:25 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Sun Nov 15 2020 20:25:03 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan event "Test1" "15 Nov 2020 20:25:30 EST" 0 dm "You sucl" "" ""
+
+MetaEngineer @ Sun Nov 15 2020 20:25:05 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Sun Nov 15 2020 20:26:15 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan event "Test1" "15 Nov 2020 20:28:00 EST" 0 dm "You sucl" "" ""
+
+MetaEngineer @ Sun Nov 15 2020 20:26:17 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Sun Nov 15 2020 20:31:43 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan event "Test1" "15 Nov 2020 20:28:00 EST" 0 dm "You sucl" "" ""
+
+MetaEngineer @ Sun Nov 15 2020 20:31:45 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Sun Nov 15 2020 20:34:28 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan event "Test1" "15 Nov 2020 20:28:00 EST" 0 dm "You sucl" "" ""
+
+MetaEngineer @ Sun Nov 15 2020 20:34:30 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Sun Nov 15 2020 20:35:06 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan event "Test1" "15 Nov 2020 20:28:00 EST" 0 dm "You sucl" "" ""
+
+MetaEngineer @ Sun Nov 15 2020 20:35:08 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Sun Nov 15 2020 20:36:08 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> bot _timeouts
+
+MetaEngineer @ Sun Nov 15 2020 20:36:39 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan event "Test1" "15 Nov 2020 20:38:00 EST" 0 dm "You sucl" "" ""
+
+MetaEngineer @ Sun Nov 15 2020 20:36:41 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Sun Nov 15 2020 20:37:40 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan event "Test1" "15 Nov 2020 20:38:00 EST" 0 dm "You sucl" "" ""
+
+MetaEngineer @ Sun Nov 15 2020 20:37:41 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Sun Nov 15 2020 20:38:59 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan event "Test1" "15 Nov 2020 20:38:00 EST" 0 dm "You sucl" "" ""
+
+MetaEngineer @ Sun Nov 15 2020 20:39:00 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Sun Nov 15 2020 20:49:33 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan event "Test2" "15 Nov 2020 20:38:00 EST" 0 dm "You sucl" "" ""
+
+MetaEngineer @ Sun Nov 15 2020 20:49:34 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Sun Nov 15 2020 20:56:13 GMT-0500 (Eastern Standard Time)
+@bot users
+
+MetaEngineer @ Sun Nov 15 2020 20:56:18 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> bot users
+
+MetaEngineer @ Sun Nov 15 2020 21:10:42 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> bot _timeouts
+
+MetaEngineer @ Sun Nov 15 2020 21:23:10 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> schedule info "Test2"
+
+MetaEngineer @ Sun Nov 15 2020 23:03:30 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> schedule list
+
+MetaEngineer @ Sun Nov 15 2020 23:12:41 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan list
+
+MetaEngineer @ Sun Nov 15 2020 23:12:47 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> help plan
+
+MetaEngineer @ Sun Nov 15 2020 23:12:59 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan signup "Cheese day"
+
+MetaEngineer @ Sun Nov 15 2020 23:13:16 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan removeme"Cheese day"
+
+MetaEngineer @ Sun Nov 15 2020 23:13:20 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan signup "Cheese day"
+
+MetaEngineer @ Sun Nov 15 2020 23:13:21 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan signup "Cheese day"
+
+MetaEngineer @ Sun Nov 15 2020 23:20:14 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan message "I Got What You Need" "15 Nov 2020 23:23:00 EST" 0 dm "Call me the Doctor, Doctor Funk" ""
+
+MetaEngineer @ Sun Nov 15 2020 23:20:22 GMT-0500 (Eastern Standard Time)
+no
+
+MetaEngineer @ Sun Nov 15 2020 23:22:52 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan message "I Got What You Need" "15 Nov 2020 23:23:00 EST" 0 dm "Call me the Doctor, Doctor Funk" "" <@!162411606041427969>
+
+MetaEngineer @ Sun Nov 15 2020 23:22:58 GMT-0500 (Eastern Standard Time)
+yea
+
+MetaEngineer @ Sun Nov 15 2020 23:27:47 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan message "I Got What You Need" "15 Nov 2020 23:23:00 EST" 0 dm "Call me the Doctor, Doctor Funk" "" <@!162411606041427969>
+
+MetaEngineer @ Sun Nov 15 2020 23:31:13 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan message "I Got What You Need" "15 Nov 2020 23:23:00 EST" 0 dm "Call me the Doctor, Doctor Funk" "" <@!162411606041427969>
+
+MetaEngineer @ Sun Nov 15 2020 23:35:00 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan message "I Got What You Need" "15 Nov 2020 23:23:00 EST" 0 dm "Call me the Doctor, Doctor Funk" "" <@!162411606041427969>
+
+MetaEngineer @ Sun Nov 15 2020 23:35:02 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Sun Nov 15 2020 23:35:12 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan message "I Got What You Need" "16 Nov 2020 23:23:00 EST" 0 dm "Call me the Doctor, Doctor Funk" "" @MetaEngineer
+
+MetaEngineer @ Sun Nov 15 2020 23:35:14 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Sun Nov 15 2020 23:36:55 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan info "I Got What You Need"
+
+MetaEngineer @ Sun Nov 15 2020 23:37:17 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan list
+
+MetaEngineer @ Sun Nov 15 2020 23:37:53 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan message "Funk" "15 Nov 2020 23:38:10 EST" 0 dm "Call me the Doctor, Doctor Funk" "" @MetaEngineer
+
+MetaEngineer @ Sun Nov 15 2020 23:37:55 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Sun Nov 15 2020 23:40:26 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan message "Funk" "16 Nov 2020 23:41:00 EST" 0 dm "Call me the Doctor, Doctor Funk" "" @MetaEngineer
+
+MetaEngineer @ Sun Nov 15 2020 23:40:28 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Sun Nov 15 2020 23:42:50 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan message "Funk" "15 Nov 2020 23:43:00 EST" 0 dm "Call me the Doctor, Doctor Funk" "" @MetaEngineer
+
+MetaEngineer @ Sun Nov 15 2020 23:42:52 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Sun Nov 15 2020 23:44:49 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan message "Funk" "16 Nov 2020 23:41:00 EST" 0 dm "Call me the Doctor, Doctor Funk" "" <@!162411606041427969>
+
+MetaEngineer @ Sun Nov 15 2020 23:44:51 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Sun Nov 15 2020 23:45:06 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan message "Funk" "15 Nov 2020 23:46:00 EST" 0 dm "Call me the Doctor, Doctor Funk" "" @MetaEngineer
+
+MetaEngineer @ Sun Nov 15 2020 23:45:07 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Sun Nov 15 2020 23:46:16 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> bot _intervals
+
+MetaEngineer @ Sun Nov 15 2020 23:46:29 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> bot _timeouts
+
+MetaEngineer @ Sun Nov 15 2020 23:46:52 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> bot
+
+MetaEngineer @ Sun Nov 15 2020 23:47:55 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan message "Funk" "15 Nov 2020 23:48:00 EST" 0 dm "Call me the Doctor, Doctor Funk" "" <@!162411606041427969>
+
+MetaEngineer @ Sun Nov 15 2020 23:47:57 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Sun Nov 15 2020 23:49:30 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan message "Funk" "15 Nov 2020 23:50:00 EST" 0 dm "Call me the Doctor, Doctor Funk" "" <@!162411606041427969>
+
+MetaEngineer @ Sun Nov 15 2020 23:49:31 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Sun Nov 15 2020 23:51:50 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan message "Funk" "15 Nov 2020 23:52:00 EST" 0 dm "Call me the Doctor, Doctor Funk" "" @MetaEngineer
+
+MetaEngineer @ Sun Nov 15 2020 23:51:51 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Sun Nov 15 2020 23:52:40 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan message "Funk" "15 Nov 2020 23:53:00 EST" 0 dm "Call me the Doctor, Doctor Funk" "" @MetaEngineer
+
+MetaEngineer @ Sun Nov 15 2020 23:52:42 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Sun Nov 15 2020 23:57:33 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan message "Funk" "15 Nov 2020 23:58:00 EST" 0 dm "Call me the Doctor, Doctor Funk" "" @MetaEngineer
+
+MetaEngineer @ Sun Nov 15 2020 23:57:35 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Mon Nov 16 2020 00:00:16 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan message "Funk" "16 Nov 2020 00:01:00 EST" 0 dm "Call me the Doctor, Doctor Funk" "" @MetaEngineer
+
+MetaEngineer @ Mon Nov 16 2020 00:00:17 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Mon Nov 16 2020 00:01:57 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan message "Funk" "16 Nov 2020 00:02:00 EST" 0 dm "Call me the Doctor, Doctor Funk" "" @MetaEngineer
+
+MetaEngineer @ Mon Nov 16 2020 00:01:58 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Mon Nov 16 2020 00:05:52 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan message "Funk" "16 Nov 2020 00:06:00 EST" 0 dm "Call me the Doctor, Doctor Funk" "" @MetaEngineer
+
+MetaEngineer @ Mon Nov 16 2020 00:05:53 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Mon Nov 16 2020 00:15:29 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan message "FuAnk" "16 Nov 2020 00:06:00 EST" 0 dm "Call me the Doctor, Doctor Funk" "" <@!162411606041427969>
+
+MetaEngineer @ Mon Nov 16 2020 00:15:31 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Mon Nov 16 2020 00:15:39 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan message "Funk" "16 Nov 2020 00:16:00 EST" 0 dm "Call me the Doctor, Doctor Funk" "" @MetaEngineer
+
+MetaEngineer @ Mon Nov 16 2020 00:15:41 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Mon Nov 16 2020 00:16:43 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan message "Funk" "16 Nov 2020 00:17:00 EST" 0 dm "Call me the Doctor, Doctor Funk" "" @MetaEngineer
+
+MetaEngineer @ Mon Nov 16 2020 00:16:45 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Mon Nov 16 2020 00:18:10 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan message "Funk" "16 Nov 2020 00:19:00 EST" 0 dm "Call me the Doctor, Doctor Funk" "" @MetaEngineer
+
+MetaEngineer @ Mon Nov 16 2020 00:18:11 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Mon Nov 16 2020 00:23:39 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan message "Funk" "16 Nov 2020 00:24:00 EST" 0 dm "Call me the Doctor, Doctor Funk" "" @MetaEngineer
+
+MetaEngineer @ Mon Nov 16 2020 00:23:41 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Mon Nov 16 2020 00:25:40 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan message "Funk" "16 Nov 2020 00:26:00 EST" 0 dm "Call me the Doctor, Doctor Funk" "" @MetaEngineer
+
+MetaEngineer @ Mon Nov 16 2020 00:25:41 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Mon Nov 16 2020 00:26:53 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan message "Funk" "16 Nov 2020 00:27:00 EST" 0 dm "Call me the Doctor, Doctor Funk" "" @MetaEngineer
+
+MetaEngineer @ Mon Nov 16 2020 00:26:54 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Mon Nov 16 2020 00:28:24 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan message "Funk" "16 Nov 2020 00:29:00 EST" 0 dm "Call me the Doctor, Doctor Funk" "" @MetaEngineer
+
+MetaEngineer @ Mon Nov 16 2020 00:28:25 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Mon Nov 16 2020 00:30:58 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan message "Funk" "16 Nov 2020 00:31:00 EST" 0 dm "Call me the Doctor, Doctor Funk" "" @MetaEngineer
+
+MetaEngineer @ Mon Nov 16 2020 00:31:00 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Mon Nov 16 2020 00:31:14 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan message "FAunk" "16 Nov 2020 00:31:20 EST" 0 dm "Call me the Doctor, Doctor Funk" "" @MetaEngineer
+
+MetaEngineer @ Mon Nov 16 2020 00:31:15 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Mon Nov 16 2020 00:31:48 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> bot _timeouts
+
+MetaEngineer @ Mon Nov 16 2020 00:31:57 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan info
+
+MetaEngineer @ Mon Nov 16 2020 00:32:03 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan list
+
+MetaEngineer @ Mon Nov 16 2020 00:32:28 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan event"Funk" "16 Nov 2020 00:33:00 EST" 0 dm "Call me the Doctor, Doctor Funk" "" @MetaEngineer
+
+MetaEngineer @ Mon Nov 16 2020 00:32:31 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Mon Nov 16 2020 00:32:35 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan list
+
+MetaEngineer @ Mon Nov 16 2020 00:32:49 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan info Funk
+
+MetaEngineer @ Mon Nov 16 2020 00:34:09 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan list
+
+MetaEngineer @ Mon Nov 16 2020 00:38:50 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> bot users
+
+MetaEngineer @ Mon Nov 16 2020 00:39:27 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> help plan
+
+MetaEngineer @ Mon Nov 16 2020 00:41:15 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan event "Monday Morning" "Nov 16 2020 00:41:20 EST" 0 dm "I love mondays! Back on the workside no more nagging wife" https://i.kym-cdn.com/photos/images/original/001/692/496/155.jpg <@!162411606041427969>
+
+MetaEngineer @ Mon Nov 16 2020 00:41:17 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Mon Nov 16 2020 00:41:18 GMT-0500 (Eastern Standard Time)
+ok
+
+MetaEngineer @ Mon Nov 16 2020 00:41:19 GMT-0500 (Eastern Standard Time)
+ok
+
+MetaEngineer @ Mon Nov 16 2020 00:41:20 GMT-0500 (Eastern Standard Time)
+ok
+
+MetaEngineer @ Mon Nov 16 2020 00:41:51 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan event "Monday Morning" "Nov 16 2020 00:42:20 EST" 0 dm "I love mondays! Back on the workside no more nagging wife" https://i.kym-cdn.com/photos/images/original/001/692/496/155.jpg ""
+
+MetaEngineer @ Mon Nov 16 2020 00:41:52 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Mon Nov 16 2020 00:42:10 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> info "Monday Morning"
+
+MetaEngineer @ Mon Nov 16 2020 00:42:29 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan event "Monday Morning" "Nov 16 2020 00:45:20 EST" 0 dm "I love mondays! Back on the workside no more nagging wife" https://i.kym-cdn.com/photos/images/original/001/692/496/155.jpg ""
+
+MetaEngineer @ Mon Nov 16 2020 00:42:30 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Mon Nov 16 2020 00:42:40 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan info "Monday Morning"
+
+MetaEngineer @ Mon Nov 16 2020 00:43:03 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan signup "Monday Morning"
+
+MetaEngineer @ Mon Nov 16 2020 00:44:54 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan event "Monday Morning" "Nov 16 2020 00:46:20 EST" 0 dm "I love mondays! Back on the workside no more nagging wife" https://i.kym-cdn.com/photos/images/original/001/692/496/155.jpg ""
+
+MetaEngineer @ Mon Nov 16 2020 00:44:56 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Mon Nov 16 2020 00:45:04 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan info "Monday Morning"
+
+MetaEngineer @ Mon Nov 16 2020 00:45:49 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan event "Monday Morning" "Nov 16 2020 00:47:20 EST" 0 dm "I love mondays! Back on the workside no more nagging wife" https://i.kym-cdn.com/photos/images/original/001/692/496/155.jpg ""
+
+MetaEngineer @ Mon Nov 16 2020 00:45:50 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Mon Nov 16 2020 00:45:57 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan info "Monday Morning"
+
+MetaEngineer @ Mon Nov 16 2020 00:47:18 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan event "Monday Morning" "Nov 16 2020 00:49:20 EST" 0 dm "I love mondays! Back on the workside no more nagging wife" https://i.kym-cdn.com/photos/images/original/001/692/496/155.jpg ""
+
+MetaEngineer @ Mon Nov 16 2020 00:47:19 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Mon Nov 16 2020 00:47:28 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan info "Monday Morning"
+
+MetaEngineer @ Mon Nov 16 2020 00:49:08 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan event "Monday Morning" "Nov 16 2020 00:51:20 EST" 0 dm "I love mondays! Back on the workside no more nagging wife" https://i.kym-cdn.com/photos/images/original/001/692/496/155.jpg ""
+
+MetaEngineer @ Mon Nov 16 2020 00:49:09 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Mon Nov 16 2020 00:49:15 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan info "Monday Morning"
+
+MetaEngineer @ Mon Nov 16 2020 00:55:53 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan event "Monday Morning" "Nov 16 2020 00:57:20 EST" 0 dm "I love mondays! Back on the workside no more nagging wife" https://i.kym-cdn.com/photos/images/original/001/692/496/155.jpg ""
+
+MetaEngineer @ Mon Nov 16 2020 00:55:54 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Mon Nov 16 2020 00:56:04 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan info "Monday Morning"
+
+MetaEngineer @ Mon Nov 16 2020 00:56:22 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> bot _timeouts
+
+MetaEngineer @ Mon Nov 16 2020 00:56:35 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan signup "Monday Morning"
+
+MetaEngineer @ Mon Nov 16 2020 00:59:25 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan event "Monday Morning" "Nov 16 2020 00:57:20 EST" 0 dm "I love mondays! Back on the workside no more nagging wife" "" ""
+
+MetaEngineer @ Mon Nov 16 2020 00:59:37 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan event "Monday Morning" "Nov 16 2020 01:01:20 EST" 0 dm "I love mondays! Back on the workside no more nagging wife" "" ""
+
+MetaEngineer @ Mon Nov 16 2020 00:59:43 GMT-0500 (Eastern Standard Time)
+y
+
+MetaEngineer @ Mon Nov 16 2020 00:59:56 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan signup "Monday Morning"
+
+MetaEngineer @ Mon Nov 16 2020 01:00:24 GMT-0500 (Eastern Standard Time)
+<@!776307119967567944> plan info "Monday Morning"
+

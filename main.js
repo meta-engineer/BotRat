@@ -1,16 +1,16 @@
 // This is the entry point for node
 
 // discord imports
-const discord = require('discord.js');
+const discord = require('discord.js')
 if (!discord) return console.error("Failed to import discord.js");
 
 const auth = require('./secrets.json');
 if (!auth) return console.error("No token file (secrets.json) found");
 //const prefix = "<@!" + auth.CLIENT_ID + "> "; //this a permenant solution?
-// ===============
 
 // node package imports
 const fs = require('fs');
+const scheduler = require('./utilities/scheduler.js');
 // ====================
 
 // instantiate our bot client object
@@ -24,7 +24,11 @@ for (const file of commandFiles) {
     bot.commands.set(command.name, command);
 }
 
-bot.login(auth.TOKEN);
+try {
+    bot.login(auth.TOKEN);
+} catch (e) {
+    return console.log("Could not login, check your connection");
+}
 // can access bot.users.cache for seen users?
 
 bot.on('ready', () => {
@@ -45,6 +49,9 @@ bot.on('ready', () => {
             url: "https://github.com/meta-engineer"
         }
     );
+
+    // build events schedule from previous runtime
+    scheduler.restoreDB(bot);
 });
 
 bot.on('message', (msg) => {
@@ -52,6 +59,14 @@ bot.on('message', (msg) => {
     if (msg.webhookID) return;
     //if (!msg.content.startsWith(prefix)) return;
     //console.log(msg);
+    // log all messages given to BotRat
+    fs.appendFile('database/log.txt', 
+        msg.author.username + " @ " + new Date().toString() + '\n' + msg.content + '\n\n', 
+        (e) => {
+            if (e) {
+                //console.log("Failed to log message");
+            }
+        });
 
     const prefixRegex = new RegExp(`^(<@!?${auth.CLIENT_ID}>)\\s*`);
     if (!prefixRegex.test(msg.content)) return;
@@ -62,7 +77,8 @@ bot.on('message', (msg) => {
     if (!argsStr) return;   // just exit quietly on no args, should we suggest help?
 
     // split on '"', then alternating index will be split on spaces?
-    const argsList = argsStr.split('"').filter(w => w.length > 0);
+    const argsList = argsStr.split('"');
+    
     const args = [];
     for (let i = 0; i < argsList.length; i++) {
         if (i % 2 == 1) {

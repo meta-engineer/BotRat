@@ -16,7 +16,7 @@ module.exports = {
             reply.push('Commands start with **@BotRat**')
             reply.push('Available commands:');
             reply.push(commands.filter(c => !c.hidden).map(c => `*${c.name}*`).join(', '));
-            reply.push(`Use "${commands.get('help').usage}" for more info`);
+            reply.push(`Use *${commands.get('help').usage}* for more info`);
             reply.push(`(You can ask me in a DM to reduce spam.)`);
         } else {
             while (args.length) {
@@ -24,7 +24,7 @@ module.exports = {
                 const cmd = commands.get(cmdStr) || commands.find(c => c.aliases && c.aliases.includes(cmdStr));
 
                 if (!cmd) {
-                    reply.push(`"${cmdStr}" is not a command (use "commands" for a listing)`);
+                    reply.push(`"${cmdStr}" is not a command (use *commands* for a listing)`);
                 } else {
                     reply.push(`**Name:** ${cmd.name}`);
                     if (cmd.aliases) reply.push(`**Aliases:** ${cmd.aliases.join(', ')}`);
