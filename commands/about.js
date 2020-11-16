@@ -31,7 +31,7 @@ module.exports = {
             .setAuthor('Meta-engineer', 'https://avatars2.githubusercontent.com/u/13059024?s=460&u=c33c54542dbf8ce736c0c78c902491fdff019f70&v=4', 'https://github.com/meta-engineer')
             .setDescription('"Well I like being a bot, so I guess I\'m a BotRat"')
             .setThumbnail('https://cdn.discordapp.com/avatars/776307119967567944/9e19fba1a6f79707d9806a9689f8bac0.png')
-            .addField('What in the hell are you?', 'BotRat is a miscellaneous bot developed by meta-engineer. \nUse "@BotRat help" for available commands, or check out the BotRat project page (linked above) for more info or to help improve BotRat.')
+            .addField('What in the hell are you?', 'BotRat is a miscellaneous bot developed by meta-engineer. \nUse "@BotRat help" for available commands, or check out the BotRat project page (linked above) for more info or to help improve BotRat. I am in continuous development so expect glitches/bugs.')
             .setTimestamp();
         msg.channel.send(aboutEmbed);
         return true;

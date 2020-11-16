@@ -33,10 +33,7 @@ module.exports = {
         if (eventArgs.authorName) embed.setFooter(`#${eventArgs.versary} • ${eventArgs.authorName}`);
         if (eventArgs.attachmentURL) embed.setImage(eventArgs.attachmentURL);
         if (eventArgs.message) embed.setDescription(eventArgs.mentions.join(' ') + '\n' + eventArgs.message);
-        
-        if (!embed) {
-            console.log("Embed became falsy");
-        }
+
         return embed;
     },
     procEvent: function (client, eventArgs) {
@@ -55,14 +52,7 @@ module.exports = {
             console.error("embed failed in proc");
             return 1;
         }
-        if (eventArgs.channelType == 'text') {
-            const chan = client.channels.cache.find(c => c.type == 'text' && c.name == eventArgs.channelName);
-            if (!chan) {
-                console.error("failed to find text cahnnel");
-                return 1;
-            }
-            chan.send(embed); // thats it?
-        } else if (eventArgs.channelType == 'dm') {
+        if (eventArgs.channelType == 'dm') {
             for (let m of eventArgs.mentions) {
                 // can be of form ..., @..., or <@...>
                 //use cache to get object -> dmChannel
@@ -83,7 +73,19 @@ module.exports = {
                 else console.error("Failed to find DM channel");
             }
         } else {
-            // something weird happened
+            let chan = null;
+            for (let c of client.channels.cache) {
+                if (c[1].type == eventArgs.channelType && c[1].name == eventArgs.channelName){
+                    chan = c[1];
+                    break;
+                }
+            }
+            
+            if (!chan) {
+                console.error("failed to find text cahnnel");
+                return 1;
+            }
+            chan.send(embed); // thats it?
         }
         // ... we want to setup the next one with createTimeout()
         // only if it repeats, otherwise we want to delete this
@@ -96,13 +98,13 @@ module.exports = {
         const interval = this.parseRepeatCode(eventArgs.repeatCode);
         var eventTimeout = null;
         for (let t of client._timeouts) {
-            if (t._eventArgs && t._eventArgs.name == eventArgs.name) {
+            if (t._timerArgs && t._timerArgs[1] && t._timerArgs[1].name == eventArgs.name) {
                 eventTimeout = t;
                 break;
             }
         }
         if (!eventTimeout) {
-            return console.log("There was no timer to complete for this event");
+            return console.error("There was no timer to complete for this event");
         }
         if (interval.months || interval.days || interval.hours) {
             eventArgs.versary += 1;
@@ -122,8 +124,18 @@ module.exports = {
 
         let eventDate = Date.parse(eventArgs.startDate);
         if (!eventDate) throw { message: 'I did not understand the given time. Format is \"01 Jan 2020 12:30:00 EST\""' };
-        if (eventArgs.channelType == 'text' && !client.channels.cache.includes(c => c.type == 'text' && c.name == eventArgs.channelName)) {
-            throw { message: `Could not find the channel ${eventArgs.channelName} in any servers, make sure it is spelled correctly (case sensitive) and BotRat is in the relevant server` };
+        // test for public channel
+        if (eventArgs.channelType != 'dm') {
+            let chanFlag = false;   // Euugh, flags. How can this be better?
+            for (let c of client.channels.cache) {
+                if (c[1].type == eventArgs.channelType && c[1].name == eventArgs.channelName) {
+                    chanFlag = true;
+                    break;
+                }
+            }
+            if (!chanFlag) {
+                throw { message: `Could not find the channel ${eventArgs.channelName} in any servers, make sure it is spelled correctly (case sensitive) and BotRat is in the relevant server` };
+            }
         }
         
         // _idleTimeout should take versary into account
@@ -135,9 +147,10 @@ module.exports = {
 
         //update client (backups is responsability of caller)
         let to = setTimeout(this.procEvent, eventDate - Date.now(), client, eventArgs);
-        to._eventArgs = eventArgs;
+        //to._eventArgs = eventArgs;
         client._timeouts.add(to);
-        //console.log(client._timeouts);
+        //console.log(to);
+        //console.log(to._timerArgs);
         // DO NOT Backup here becuase this is called seuqentially during restore
     },
     // give all available to this user/public, they will filter based on message/chan
@@ -146,11 +159,11 @@ module.exports = {
         //i can read this from client instead of DB, assuming they are in lockstep
         var events = [];
         for (let t of client._timeouts) {
-            if (!t._eventArgs || !t._eventArgs.name) continue;
-            if (t._eventArgs.type == 'message' && (!user || t._eventArgs.authorID != user.id)) continue;
+            if (!t._timerArgs || !t._timerArgs[1] || !t._timerArgs[1].name) continue;
+            if (t._timerArgs[1].type == 'message' && (!user || t._timerArgs[1].authorID != user.id)) continue;
             // account for mentions formats? ..., @..., <@!?...>
-            if (t._eventArgs.channelType == 'dm' && !user && t._eventArgs.authorID != user.id && (!user || !t._eventArgs.mentions.includes(m => m.includes(user.username) || m.includes(user.id)))) continue;
-            events.push(t._eventArgs);
+            if (t._timerArgs[1].channelType == 'dm' && !user && t._timerArgs[1].authorID != user.id && (!user || !t._timerArgs[1].mentions.includes(m => m.includes(user.username) || m.includes(user.id)))) continue;
+            events.push(t._timerArgs[1]);
         }
         return events;
     },
@@ -160,33 +173,34 @@ module.exports = {
         // ignores private rules
         var evt = null;
         for (let t of client._timeouts) {
-            if (t._eventArgs && t._eventArgs.name == eventStr) {
-                evt = t._eventArgs;
+            if (t._timerArgs && t._timerArgs[1] && t._timerArgs[1].name == eventStr) {
+                evt = t._timerArgs[1];
                 break;
             }
         }
-        // if no event or its someone elses message, or its a dm and your not author.included
+        
+        // if no event or its someone elses message, or its a dm and your not author/included
         if (!evt || 
             (evt.type == 'message' && (!user || evt.authorID != user.id)) ||
-            (evt.channelType == 'dm' && (!user || evt.authorID != user.id || !evt.mentions.includes(m => m.includes(user.username) || m.includes(user.id))))) {
-                throw { message: "Could not get event" };
+            (evt.channelType == 'dm' && (!user || (evt.authorID != user.id && !evt.mentions.includes(m => m.includes(user.username) || m.includes(user.id)))))) {
+                throw { message: 'Could not get event. Use "schedule list" to see what is available' };
             }
         return evt;
     },
     deleteEventSync: function (client, eventStr, user) {
         // only allow if user is admin or author
         // update in client and backup to DB
-        var evt = null;
+        var tim = null;
         for (let t of client._timeouts) {
-            if (t._eventArgs && t._eventArgs.name == eventStr) {
-                evt = t._eventArgs;
+            if (t._timerArgs && t._timerArgs[1] && t._timerArgs[1].name == eventStr) {
+                tim = t;
                 break;
             }
         }
-        if (!evt || (!auth.ADMIN_IDS.includes(user.id) && evt.authorID != user.id)) {
+        if (!tim._timerArgs[1] || (!auth.ADMIN_IDS.includes(user.id) && tim._timerArgs[1].authorID != user.id)) {
             throw { message: "Could not delete that event (only the creator can)" };
         }
-        client._timeouts.delete(evt);
+        client._timeouts.delete(tim);
         this.backupDB(client);
             
     },
@@ -196,8 +210,8 @@ module.exports = {
         // update in client, backup to DB
         var evt = null;
         for (let t of client._timeouts) {
-            if (t._eventArgs && t._eventArgs.name == eventStr) {
-                evt = t._eventArgs;
+            if (t._timerArgs && t._timerArgs[1] && t._timerArgs[1].name == eventStr) {
+                evt = t._timerArgs[1];
                 break;
             }
         }
@@ -205,10 +219,12 @@ module.exports = {
             throw { message: "Could not add you" };
         }
         // if not added, includes self and update
-        if (!evt.mentions.includes(m => m.includes(user.username) || m.includes(user.id))) {
-            evt.mentions.push(`<@${user.id}`);
+        let mIndex = evt.mentions.findIndex(m => m.includes(user.username) || m.includes(user.id));
+        if (mIndex == -1) {
+            evt.mentions.push(`<@${user.id}>`);
             this.backupDB(client);
         }
+        
         return true;
     },
     removeUserSync: function (client, eventStr, user) {
@@ -216,22 +232,20 @@ module.exports = {
         // update in client, backup to DB
         var evt = null;
         for (let t of client._timeouts) {
-            if (t._eventArgs && t._eventArgs.name == eventStr) {
-                evt = t._eventArgs;
+            if (t._timerArgs && t._timerArgs[1] && t._timerArgs[1].name == eventStr) {
+                evt = t._timerArgs[1];
                 break;
             }
         }
         if (!evt) {
             throw { message: "Could not remove you" };
         }
-        let mention = evt.mentions.find(m => m.includes(user.username) || m.includes(user.id));
-        if (!mention) {
-            throw { message: "Could not remove you" }; // is there a better control flow?
+        let mIndex = evt.mentions.findIndex(m => m.includes(user.username) || m.includes(user.id));
+        if (mIndex != -1) {
+            evt.mentions.splice(mIndex, 1);
+            this.backupDB(client);
         }
         
-        evt.mentions.delete(mention);
-        this.backupDB(client);
-
         return true;
     },
     parseRepeatCode: function (code) {
@@ -291,8 +305,8 @@ module.exports = {
         // write to "DB"
         var DB = [];
         for (let t of client._timeouts) {
-            if (!t._eventArgs || !t._eventArgs.name) continue;
-            DB.push(t._eventArgs);
+            if (!t._timerArgs || !t._timerArgs[1] || !t._timerArgs[1].name) continue;
+            DB.push(t._timerArgs[1]);
         }
         try {
             fs.writeFileSync('database/events.json', JSON.stringify(DB));

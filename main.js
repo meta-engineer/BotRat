@@ -29,6 +29,7 @@ try {
 } catch (e) {
     return console.log("Could not login, check your connection");
 }
+// build events schedule from previous runtime after login?
 // can access bot.users.cache for seen users?
 
 bot.on('ready', () => {
@@ -49,9 +50,13 @@ bot.on('ready', () => {
             url: "https://github.com/meta-engineer"
         }
     );
+    try {
+        console.log("Load stored events");
+        scheduler.restoreDB(bot);
+    } catch (e) {
+        console.error(e.message);
+    }
 
-    // build events schedule from previous runtime
-    scheduler.restoreDB(bot);
 });
 
 bot.on('message', (msg) => {

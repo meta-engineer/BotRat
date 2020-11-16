@@ -69,7 +69,7 @@ module.exports = {
                 }
 
                 let listMsg = [];
-                listMsg.push('Here\'s all the upcoming events:');
+                listMsg.push('Here\'s what\'s upcoming:');
 
                 if (msg.channel.type != 'dm') {
                     events = events.filter(e => e.channelType == 'dm');
@@ -79,7 +79,7 @@ module.exports = {
                 for (let e of events) {
                     listMsg.push(`**${e.name}**`);
                 }
-                listMsg.push('use *schedule info <EVENT/MESSAGE NAME> for more details');
+                listMsg.push('use *schedule info <EVENT/MESSAGE NAME>* for more details');
 
                 return msg.channel.send(listMsg.join('\n'));
             case "info":
@@ -96,19 +96,19 @@ module.exports = {
                 if (!event) {
                     return msg.channel.send('Could not find that event. Use "schedule list" to see what is available');
                 }
-
-                console.log(event);
                 
                 // send fancy embed here?
-                let next = handler.addRepeatCodeToDate(Date.parse(event.startDate), event.repeatCode, event.versary);
+                let next = handler.addRepeatCodeToDate(new Date(event.startDate), event.repeatCode, event.versary);
+                
                 let info = [];
-                info.push(`**${event.name}** ${next.toString()}\n`);
+                info.push(`**${event.name}**\n`);
                 info.push(`Created by ${event.authorName}\n`);
                 if (event.channelType == 'dm') {
                     info.push(`This is a private ${event.type} (It will be sent in DMs)\n`);
                 } else {
                     info.push(`This ${event.type} will be sent in ${event.channelName}\n`);
                 }
+                info.push(`${next.toString()}\n`);
                 if (event.versary > 0) info.push(`This ${event.type} has repeated ${event.versary} time${event.versary > 1 ? 's' : ''} before.\n`);
                 if (event.mentions.length <= 0) {
                     info.push("Nobody is included in this event");
@@ -210,8 +210,18 @@ module.exports = {
                 if (!Date.parse(timerArgs.startDate)) return msg.channel.send("I did not understand the given time. Format is \"01 Jan 2020 12:30:00 EST\"")
                 if (Date.parse(timerArgs.startDate) - Date.now() <= 0) return msg.channel.send("Cannot set the date for the past");
 
-                if (timerArgs.channelType == 'text' && !msg.client.channels.cache.includes(c => c.type == 'text' && c.name == timerArgs.channelName)) {
-                    return msg.channel.send(`Could not find the channel ${timerArgs.channelName} in any servers, make sure it is spelled correctly (case sensitive) and BotRat is in the relevant server`);
+                // validate channelName is findable
+                if (timerArgs.channelType != 'dm') {
+                    let chan = null;
+                    for (let c of msg.client.channels.cache) {
+                        if (c[1].type == timerArgs.channelType && c[1].name == timerArgs.channelName){
+                            chan = c[1];
+                            break;
+                        }
+                    }
+                    if (!chan) {
+                        return msg.channel.send(`Could not find the channel ${timerArgs.channelName} in any servers, make sure it is spelled correctly (case sensitive) and BotRat is in the relevant server`);
+                    }
                 }
                 
                 let toCorrect = []; // store failed values for feedback
