@@ -1,4 +1,4 @@
 # Just need to add name of file to be ignored
 # ignore directories with trailing /
 # * wildcards can be used (*.ext) others available?
-#secrets.json
+secrets.json
