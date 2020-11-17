@@ -1,6 +1,6 @@
 # Just need to add name of file to be ignored
 # ignore directories with trailing /
 # * wildcards can be used (*.ext) others available?
-#secrets.json
+secrets.json
 # !!!! You can't just hide this and then git push !!!!
 # it has to be deleted in the commit or ignore doesn't do anything
