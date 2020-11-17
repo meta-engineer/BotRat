@@ -45,6 +45,7 @@ module.exports = {
             console.error("no eventArgs?");
             return;
         }
+        console.log("procing event!");
 
         const sched = require('./scheduler.js');
         const embed = sched.createEmbed(eventArgs);
@@ -95,7 +96,6 @@ module.exports = {
     // or increments .versary and calls createTimeoutSync
     eventComplete: function (client, eventArgs) {
         // could also check for a maximum repeat number here
-        const interval = this.parseRepeatCode(eventArgs.repeatCode);
         var eventTimeout = null;
         for (let t of client._timeouts) {
             if (t._timerArgs && t._timerArgs[1] && t._timerArgs[1].name == eventArgs.name) {
@@ -106,7 +106,7 @@ module.exports = {
         if (!eventTimeout) {
             return console.error("There was no timer to complete for this event");
         }
-        if (interval.months || interval.days || interval.hours) {
+        if (eventArgs.repeatObj.years || eventArgs.repeatObj.months || eventArgs.repeatObj.days || eventArgs.repeatObj.hours) {
             eventArgs.versary += 1;
             this.createTimeoutSync(client, eventArgs);
             this.backupDB(client); //backup after create
@@ -122,7 +122,7 @@ module.exports = {
         // repeated validation from schedule.js
         console.log("creating event!");
 
-        let eventDate = Date.parse(eventArgs.startDate);
+        let eventDate = new Date(eventArgs.startDate);
         if (!eventDate) throw { message: 'I did not understand the given time. Format is \"01 Jan 2020 12:30:00 EST\""' };
         // test for public channel
         if (eventArgs.channelType != 'dm') {
@@ -139,7 +139,7 @@ module.exports = {
         }
         
         // _idleTimeout should take versary into account
-        eventDate = this.addRepeatCodeToDate(eventDate, eventArgs.repeatCode, eventArgs.versary);
+        eventDate = this.addRepeatObjToDate(eventDate, eventArgs.repeatObj, eventArgs.versary);
 
         if (eventDate - Date.now() <= 0) {
             return;
@@ -248,55 +248,12 @@ module.exports = {
         
         return true;
     },
-    parseRepeatCode: function (code) {
-        let months = 0;
-        let days = 0;
-        let hours = 0;
-        try {
-            let codes = code.split('/');
-            if (code.length > 1) {
-                // MM/DD or MM/DD:HH
-                months = parseInt(codes[0].trim());
-                codes = codes[1].split(':');
-                days = parseInt(codes[0].trim());
-                if (codes[1]) {
-                    hours = parseInt(codes[1].trim());
-                }
-            } else { 
-                // MM or DD:HH
-                codes = codes[0].split(':');
-                if (codes[1]) {
-                    days = parseInt(codes[0].trim());
-                    hours = parseInt(codes[1].trim());
-                } else {
-                    months = parseInt(codes[0].trim());
-                }
-            }
-
-            if (isNaN(months + days + hours) || months + days + hours <= 0) {
-                throw "malformed string/ no repeat";
-            }
-        } catch (e) {
-            months = 0;
-            days = 0;
-            hours = 0;
-        }
-        return { 
-            months: months,
-            days: days, 
-            hours: hours
-        };
-    },
-    addRepeatCodeToDate: function (d, code, iterations) {
-        let interval = this.parseRepeatCode(code);
-        if (interval.months || interval.days || interval.hours) {
-            // mutate 
-            // Validate this month adding is correct??
-            for (let i = 0; i < iterations; i++) { // initially this will always be 0
-                d.setMonth(d.getMonth() + interval.months);
-                d.setDate(d.getDate() + interval.days);
-                d.setHour(d.getHour() + interval.hours);
-            }
+    addRepeatObjToDate: function (d, obj, iterations) {
+        for (let i = 0; i < iterations; i++) { // initially this will always be 0
+            d.setFullYear(d.getFullYear() + obj.years);
+            d.setMonth(d.getMonth() + obj.months);
+            d.setDate(d.getDate() + obj.days);
+            d.setHours(d.getHours() + obj.hours);
         }
         return d;
     },

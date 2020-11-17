@@ -15,7 +15,7 @@ _eventArgs =
     authorID: '1112352456753332',
     startDate: '01 Jan 1970 00:00:00 GMT',
     versary: 0,
-    repeatCode: '00/01:15', // hour:minute is converted directly,months...
+    repeatobj: {monrths: 0, days: 0, ...}
     channelID: '268209621724823554', // if this is 'dm' use mentions
     mentions: ['183531047416233984', '165625043601195018'], 
     message: "Back on the worksite no more nagging wife",
@@ -39,9 +39,9 @@ module.exports = {
     '| signup <EVENT NAME> \n' + 
     '| removeme <EVENT NAME> \n' + 
     '| delete <EVENT/MESSAGE NAME> \n' + 
-    '| event <EVENT NAME> <TIME> <REPEAT MM/DD:HH>* <CHANNEL/dm>* <MESSAGE>* <ATTACHMENT URL>* <PARTICIPANTS (comma separated)>*\n' +
-    '| message <MESSAGE NAME> <TIME> <REPEAT MM/DD:HH>* <CHANNEL/dm>* <MESSAGE>* <ATTACHMENT URL>* <RECIPIENTS (comma separated)>*',
-    example: '@Botrat schedule event "Monday Morning" "16 Nov 2020 09:00:00 EST" 00/07:00 "mainlobby" "I Love Mondays!" ".../monday.jpg" "@BigSteve, @Victor™, @Rolorox"',
+    '| event <EVENT NAME> on <DATE> (at <TIME>)* (every <X YEARS/MONTHS/DAYS/HOURS>)* (in <CHANNEL/dm>)* (saying <MESSAGE>)* (showing <ATTACHMENT URL>)* (with <PARTICIPANT1, PARTICIPANT2,...>)*\n' +
+    '| message <MESSAGE NAME> on <DATE> (at <TIME>)* (every <X YEARS/MONTHS/DAYS/HOURS>)* (in <CHANNEL/dm>)* (saying <MESSAGE>)* (showing <ATTACHMENT URL>)* (to <PARTICIPANT1, PARTICIPANT2,...>)*\n',
+    example: '@Botrat schedule event "Monday Morning" on 16 Nov 2020 09:00:00 EST every 7 days in "mainlobby" saying "I Love Mondays!" showing ".../monday.jpg" with @BigSteve, @Victor™, @Rolorox',
     argc: 1, // we can list validation requirements to check early
     guildUsable: true,
     dmUsable: true,
@@ -88,7 +88,7 @@ module.exports = {
                 }
                 let event = null;
                 try {
-                    event=handler.getEventSync(msg.client, args[1], msg.author);
+                    event=handler.getEventSync(msg.client, args.slice(1).join(' '), msg.author);
                 } catch (e) {
                     return msg.channel.send(e.message);
                 }
@@ -98,7 +98,7 @@ module.exports = {
                 }
                 
                 // send fancy embed here?
-                let next = handler.addRepeatCodeToDate(new Date(event.startDate), event.repeatCode, event.versary);
+                let next = handler.addRepeatObjToDate(new Date(event.startDate), event.repeatObj, event.versary);
                 
                 let info = [];
                 info.push(`**${event.name}**\n`);
@@ -141,7 +141,7 @@ module.exports = {
                 }
                 
                 try {
-                    handler.deleteEventSync(msg.client, args[1], msg.author)
+                    handler.deleteEventSync(msg.client, args.slice(1).join(' '), msg.author)
                 } catch (e) {
                     return msg.channel.send(e.message);
                 }
@@ -152,7 +152,7 @@ module.exports = {
                 }
                 
                 try {
-                    handler.includeUserSync(msg.client, args[1], msg.author);
+                    handler.includeUserSync(msg.client, args.slice(1).join(' '), msg.author);
                 } catch (e) {
                     return msg.channel.send(e.message);
                 }
@@ -163,7 +163,7 @@ module.exports = {
                 }
                 
                 try {
-                    handler.removeUserSync(msg.client, args[1], msg.author)
+                    handler.removeUserSync(msg.client, args.slice(1).join(' '), msg.author)
                 } catch (e) {
                     return msg.channel.send(e.message);
                 }
@@ -171,42 +171,210 @@ module.exports = {
             case "event":
             case "message":
                 const timerArgs = {};
-                //only really 2 (+1) args required
-                if (args.length < 3) {
-                    return msg.channel.send(`*schedule ${args[0]}* requires at least <${args[0].toUpperCase()} NAME> and <TIME>`);
+                /*
+                @BotRat 
+                plan event
+                at 19:00 tonight/today*
+                every 7 days*
+                in mainlobby/dm/dms
+                with @BigSteve, and @Victor
+                saying message message message
+                showing .../monday.jpg
+
+                read arguments as eventName until...
+                keywords [at/on, every, in, with, saying, showing]
+                when you see a keyword stream args into object until another keyword is seen
+                Then process each stream object into timerArgs
+                */
+                let input = {};
+                input.dates = [new Date().toString()]; // default to today
+                let inputProp = 'names';
+
+                for (let i = 1; i < args.length; i++) {
+                    switch (args[i]) {
+                        // cascade
+                        case 'tomorrow':
+                            input.dates = [new Date().setDate((new Date().getDate()+1)).toString()];
+                            inputProp = 'times';
+                        break;
+                        // cascade
+                        case 'today':
+                        case 'tonight':
+                            input.dates = [new Date().toString()];
+                        case 'at':
+                            inputProp = 'times';
+                        break;
+                        case 'on':
+                            input.dates = [];
+                            inputProp = 'dates';
+                        break;
+                        case 'every':
+                            inputProp = 'repeats';
+                        break;
+                        case 'in':
+                            inputProp = 'channels';
+                        break;
+                        case 'with':
+                        case 'to':
+                            inputProp = 'mentions';
+                        break;
+                        case 'saying':
+                            inputProp = 'messages';
+                        break;
+                        case 'showing':
+                            inputProp = 'attachmentURLs';
+                        break;
+                        default:
+                            if (!input[inputProp]) input[inputProp] = [];
+                            input[inputProp].push(args[i]);
+                        break;
+                    }
                 }
-                timerArgs.name = args[1];
-                timerArgs.startDate = args[2];
-                timerArgs.versary = 0;
-                timerArgs.authorID = msg.author.id;
-                timerArgs.authorName = msg.author.username;
-                timerArgs.type = args[0].toLowerCase();
-                // deafult to no repeat
-                timerArgs.repeatCode = args[3] || '00/00:00';
-                // default to channel where msg was
-                timerArgs.channelName = args[4] || msg.channel.name;
-                // see "resolve channelType" below
-                timerArgs.message = args[5] || "";
-                timerArgs.attachmentURL = args[6] || '';
-                // default to no mentions
-                if (args[7]) {
-                    timerArgs.mentions = args[7].split(',').map(m => m.trim());
+
+                // ===== convert input to timerArgs object ======
+                timerArgs.name = input.names ? input.names.join(' ') : '';
+                // VERY NAIVE SOLUTION FOR RESOLVING DATE/TIME
+                // first just try to read as is (default)
+                let tryDate = Date.parse(input.dates.join(' '));
+                if (!isNaN(tryDate)) {
+                    tryDate = new Date(tryDate);
+                    // if no year is given it defaults to 2001?
+                    if (tryDate.getFullYear() < new Date().getFullYear()) {
+                        tryDate.setFullYear(new Date().getFullYear());
+                    }
+                    timerArgs.startDate = tryDate.toString();
                 } else {
-                    timerArgs.mentions = [];
+                    // was set by 'on'
+                    // look for values > 2000 and set year
+                    // month/month shortforms and adjust month
+                    // look for *th, *st, *rd, *nd and adjust day
+                    // account for 12/30/2020 ?
+                    let buildDate = new Date();
+                    for (let i = 0; i < input.dates.length; i++) {
+                        let d = input.dates[i];
+                        // check for number or number-like
+                        d = d.toLowerCase();
+                        // THIS WILL MAKE august -> augu
+                        if (d.endsWith('th') || d.endsWith('st') || d.endsWith('rd') || d.endsWith('nd')) {
+                            d = d.slice(0, -2);
+                        }
+                        // is it a day/year
+                        let dVal = parseInt(d);
+                        if (!isNaN(dVal)) {
+                            if (dVal >= 32) {
+                                buildDate.setFullYear(dVal);
+                            } else {
+                                buildDate.setDate(dVal);
+                            }
+                        }
+                        var monthDef = {
+                            jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5, jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11
+                        }
+                        // is it a month
+                        if (d.slice(0, 3) in monthDef) {
+                            buildDate.setMonth(monthDef[d.slice(0,3)]);
+                        }
+                    }
+                    timerArgs.startDate = buildDate.toString();
+                }
+                //modify date obj by hours/mins
+                if (input.times) {
+                    // EX: 7, 7pm, 7 pm, 7:00, 19:00
+                    let modDate = new Date(timerArgs.startDate);
+                    let tStr = input.times.join('').toLowerCase();
+                    let tVal = 0;
+                    // check for am/pm
+                    if (tStr.endsWith('am')) {
+                        tStr = tStr.slice(0, -2);
+                    } else if (tStr.endsWith('pm')) {
+                        tStr = tStr.slice(0, -2);
+                        tVal += 12;
+                    }
+                    //check for :
+                    let tSplit = tStr.split(':');
+                    if (tSplit.length == 1) {
+                        if (!isNaN(parseInt(tStr))) {
+                            modDate.setHours(parseInt(tStr) + tVal);
+                        }
+                    } else if (tSplit.length > 1) {
+                        if (!isNaN(parseInt(tSplit[0]))) 
+                            modDate.setHours(parseInt(tSplit[0]) + tVal);
+                        if (!isNaN(parseInt(tSplit[1]))) 
+                            modDate.setMinutes(parseInt(tSplit[1]));
+                        if (!isNaN(parseInt(tSplit[2]))) 
+                            modDate.setSeconds(parseInt(tSplit[2]));
+                    }
+                    timerArgs.startDate = modDate.toString();
+                }
+                // set timerArgs.startDate, for validation in pre-validation (below)
+                // adjust if input.times is available
+                 timerArgs.versary = 0;
+                 timerArgs.authorID = msg.author.id;
+                 timerArgs.authorName = msg.author.username;
+                 timerArgs.type = args[0].toLowerCase();
+                timerArgs.repeatObj = {
+                    years: 0,
+                    months: 0,
+                    days: 0,
+                    hours: 0,
+                };
+                let workingVal = 0;
+                for (let i in input.repeats) {
+                    let str = input.repeats[i];
+                        if (isNaN(parseInt(str))) {
+                            if (workingVal < 0) continue;
+                            switch (str) {
+                                case 'year':
+                                case 'years':
+                                    timerArgs.repeatObj.years = workingVal;
+                                break;
+                                case 'month':
+                                case 'months':
+                                    timerArgs.repeatObj.months = workingVal;
+                                break;
+                                case 'day':
+                                case 'days':
+                                    timerArgs.repeatObj.days = workingVal;
+                                break;
+                                case 'hour':
+                                case 'hours':
+                                    timerArgs.repeatObj.hours = workingVal;
+                                break;
+                            }
+                        } else {
+                            workingVal = parseInt(str);
+                        }
+                }
+                timerArgs.channelName = input.channels ? input.channels.join(' ') : msg.channel.name;
+                timerArgs.message = input.messages ? input.messages.join(' ') : '';
+                timerArgs.attachmentURL = input.attachmentURLs ? input.attachmentURLs.join(' ') : '';
+                timerArgs.mentions = [];
+                if (input.mentions) {
+                    for (let m of input.mentions) {
+                        // could be , delimited
+                        let subM = m.split(',').map(sub => sub.trim());
+                        subM = subM.filter(s => s.toLowerCase() != 'and' && s !='');
+                        timerArgs.mentions = timerArgs.mentions.concat(subM);
+                    }
                 }
                 // resolve channelType
                 if (!timerArgs.channelName) {
                     timerArgs.channelType = 'dm';
                     // default to this channel could be dm so add self as recipient
                     timerArgs.mentions.push(`<@${msg.author.id}>`);
-                } else if (timerArgs.channelName == 'dm') {
+                } else if (timerArgs.channelName.toLowerCase() == 'dm' || timerArgs.channelName.toLowerCase() == 'dms') {
+                    timerArgs.channelName = 'dm';
                     timerArgs.channelType = 'dm';
                 } else {
                     timerArgs.channelType = 'text';
                 }
+                // ===== end convert input =====
 
                 // ===== start pre-validation =====
-                //let cleanup = [];
+                if (!timerArgs.name && !timerArgs.startDate) {
+                    return msg.channel.send(`*schedule ${args[0]}* requires at least <${args[0].toUpperCase()} NAME> and <TIME>`);
+                }
+                
                 if (!Date.parse(timerArgs.startDate)) return msg.channel.send("I did not understand the given time. Format is \"01 Jan 2020 12:30:00 EST\"")
                 if (Date.parse(timerArgs.startDate) - Date.now() <= 0) return msg.channel.send("Cannot set the date for the past");
 
@@ -257,19 +425,19 @@ module.exports = {
                 let dynString = [];
                 dynString.push(`The above ${timerArgs.type} will be created `);
 
-                // parse repeatCode
-                let repeatVals = handler.parseRepeatCode(timerArgs.repeatCode);
-                if (repeatVals.months || repeatVals.days || repeatVals.hours) {
+                // parse repeatObj
+                if (timerArgs.repeatObj.years == 0 &&timerArgs.repeatObj.months == 0 && timerArgs.repeatObj.days == 0 && timerArgs.repeatObj.hours == 0) {
+                    dynString.push(`to be sent once on ${timerArgs.startDate} `);
+                } else {
                     dynString.push(`to be sent on ${timerArgs.startDate}\n`);
                     dynString.push('and will be resent every ');
-                    if (months) dynString.push(`${months} month${months == 1 ? '' : 's'} `);
-                    if (days) dynString.push(`${days} day${days == 1 ? '' : 's'} `);
-                    if (hours) dynString.push(`${hours} hour${hours == 1 ? '' : 's'} `);
-                } else {
-                    // could be malformed so reset repeatCode
-                    timerArgs.repeatCode == '00/00:00';
-                    dynString.push(`to be sent once on ${timerArgs.startDate} `);
+                    for (let t in timerArgs.repeatObj) {
+                        if (timerArgs.repeatObj[t]) {
+                            dynString.push(`${timerArgs.repeatObj[t]} ${t} `);
+                        }
+                    }
                 }
+                dynString.push('\n');
 
                 // parse send type
                 if (timerArgs.channelType == 'dm') {
